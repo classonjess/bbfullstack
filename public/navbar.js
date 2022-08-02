@@ -27,7 +27,6 @@ function NavBar(){
         </li>
        </ul>
     </div>
-    {props.user && props.user.email}
   </nav>
  );
 }
