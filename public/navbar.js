@@ -5,7 +5,7 @@ function NavBar(){
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarToggleExternalContent">
+    <div className="collapse navbar-collapse" text="white" id="navbarToggleExternalContent">
       <ul className="navbar-nav">
         <li className="nav-item">
           <a className="nav-link" href="#/CreateAccount/">Create Account</a>
