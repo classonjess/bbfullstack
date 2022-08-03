@@ -3,6 +3,7 @@ function AllData(){
     const [data, setData] = React.useState('');
     const [user, setUser]     = React.useState('');
     const [balance, setBalance] = React.useState('');
+    const [email, setEmail] = React.useState('');
 
     React.useEffect(() => {
         // Fetch all accounts from API
@@ -10,29 +11,20 @@ function AllData(){
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                ctx.user = data[0];
+                setBalance(data[0].balance);
                 props.setStatus('')
                 props.setShow(false)
                 setData(JSON.stringify(data));
             });
     }, []);
    
-    return(
-        <Card
-           bgcolor="dark"
-           header="Login"
-           body={show ? 
-           <AllDataForm setShow={setShow} setStatus={setStatus} setUser={setUser} /> :
-           <AllDataMsg setShow={setShow} setStatus={setStatus} user={user}/>}
-        />
-    )
-
-    function AllDataMsg(props){
-        const bankUser = props.user.email;
-           return(
-           <div>
-               <h5>{` User:  ${bankUser} `}</h5>
-               <br></br>
-               <h5>{`Bank balance: ${balance}`}</h5>
-              
-           </div>);
-       }
+        return (
+            <div>
+                <p> {user.name}</p>
+                <p>{ctx.user.balance}</p>
+            <h5> Account members data</h5>
+            {data}
+            </div>);
+    }
+    
