@@ -7,7 +7,7 @@ function AllData(props){
     return (
       <Card
         bgcolor='dark'
-        header='Deposit'
+        header='Account information'
         status={status}
         body={
           show ? (
@@ -63,21 +63,4 @@ function AllData(props){
           }
       });
     }
-  
-    return (<>
-  
-      Email Address:<br/>
-      <input type="input" 
-        className="form-control" 
-        placeholder="Enter email" 
-        value={email} 
-        onChange={e => setEmail(e.currentTarget.value)}/><br/>
-  
-      <button type="submit" 
-        className="btn btn-light" 
-        onClick={handle}>
-          Check Balance
-      </button>
-  
-    </>);
-    }
+ }
