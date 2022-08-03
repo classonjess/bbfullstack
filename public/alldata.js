@@ -16,10 +16,23 @@ function AllData(){
             });
     }, []);
    
-    return (
-        <div>
-        <h5> Account members data</h5>
-        {user.email}
-        {user.balance}
-        </div>);
-}
+    return(
+        <Card
+           bgcolor="dark"
+           header="Login"
+           body={show ? 
+           <AllDataForm setShow={setShow} setStatus={setStatus} setUser={setUser} /> :
+           <AllDataMsg setShow={setShow} setStatus={setStatus} user={user}/>}
+        />
+    )
+
+    function AllDataMsg(props){
+        const bankUser = props.user.email;
+           return(
+           <div>
+               <h5>{` User:  ${bankUser} `}</h5>
+               <br></br>
+               <h5>{`Bank balance: ${balance}`}</h5>
+              
+           </div>);
+       }
