@@ -23,7 +23,7 @@ function Balance(props){
             <>
               {' '}
               <BalanceMsg setShow={setShow} setStatus={setStatus} />
-              <p>Current Bank account balance is ${balance}</p>
+              <p>Your current BadBank account balance is ${balance}</p>
             </>
           )
         }

@@ -59,7 +59,7 @@ function handle() {
             props.setStatus(data.amount);
             props.setShow(false);
             props.setAmount(data.amount);
-            window.alert(`You deposited ${amount}!`);
+            window.alert(`You deposited $${amount}!`);
             console.log("JSON:", data)
       } catch(err) {
           props.setStatus('Deposit failed')

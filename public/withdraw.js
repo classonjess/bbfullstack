@@ -50,7 +50,7 @@ function handle() {
       props.setStatus(data.amount);
       props.setShow(false);
       props.setAmount(data.amount);
-      window.alert(`You withdrew ${amount}!`);
+      window.alert(`You withdrew $${amount}!`);
       console.log("JSON:", data)
   } catch(err) {
       props.setStatus('Withdrew failed')
