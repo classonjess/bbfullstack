@@ -1,20 +1,83 @@
-function AllData(){
-    const [data, setData] = React.useState('');
-
-    React.useEffect(() => {
-        // Fetch all accounts from API
-        fetch('/account/all')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setData(JSON.stringify(data));
-            });
-    }, []);
-   
+function AllData(props){
+    const [show, setShow]     = React.useState(true);
+    const [status, setStatus] = React.useState('');  
+    const [user, setUser]     = React.useState('');
+    const [balance, setBalance] = React.useState('');
+  
     return (
-        <div>
-        <h5> Account members data</h5>
-        {data}
-        </div>);
-}
- 
+      <Card
+        bgcolor='dark'
+        header='Deposit'
+        status={status}
+        body={
+          show ? (
+            <>
+              <AllDataForm
+                user={props.user}
+                setShow={setShow}
+                setStatus={setStatus}
+                setBalance={setBalance}
+              />
+            </>
+          ) : (
+            <>
+              {' '}
+              <AllDataMsg setShow={setShow} setStatus={setStatus} />
+              <p>{email}</p>
+              <p>Your current BadBank account balance is ${balance}</p>
+            </>
+          )
+        }
+      />
+    )
+  }
+  
+  function AllDataMsg(props) {
+    return (
+      <>
+  
+      </>
+    )
+  }
+  
+  function AllDataForm(props){
+    const [email, setEmail]   = React.useState('');
+    const [balance, setBalance] = React.useState(0);  
+    const ctx = React.useContext(UserContext);
+    const user = ctx.user;
+    
+      function handle(){
+      console.log(email,balance);
+      fetch(`/account/findOne/${email}`)
+      .then(response => response.text())
+      .then(text => {
+          try {
+            const data = JSON.parse(text)
+            props.setStatus('')
+            props.setShow(false)
+            props.setBalance(data.balance)
+            console.log('JSON:', data)
+          } catch(err) {
+            props.setStatus(text)
+              console.log('err:', text);
+          }
+      });
+    }
+  
+    return (<>
+  
+      Email Address:<br/>
+      <input type="input" 
+        className="form-control" 
+        placeholder="Enter email" 
+        value={email} 
+        onChange={e => setEmail(e.currentTarget.value)}/><br/>
+  
+      <button type="submit" 
+        className="btn btn-light" 
+        onClick={handle}>
+          Check Balance
+      </button>
+  
+    </>);
+    }
