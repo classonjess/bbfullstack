@@ -7,9 +7,9 @@ function AllData(){
         header="Account Information"
         body={
           <>
-           <p>Name: {JSON.stringify(ctx.users.name)}</p>
-           <p>Email: {JSON.stringify(ctx.users.email)}</p>
-           <p>Balance: ${JSON.stringify(ctx.users.balance)}</p>
+           <p>Name: {JSON.stringify(ctx.user[0].name)}</p>
+           <p>Email: {JSON.stringify(ctx.user[0].email)}</p>
+           <p>Balance: ${JSON.stringify(ctx.user[0].balance)}</p>
          </>
              }
           />
