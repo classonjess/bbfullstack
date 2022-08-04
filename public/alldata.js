@@ -1,19 +1,19 @@
 function AllData(){
-  const ctx = React.useContext(UserContext);
-      
-    return (
-      <Card
-        bgcolor="dark"
-        header="Account Information"
-        body={
-          <>
-           <p>Name: {JSON.stringify(ctx.user[0].name)}</p>
-           <p>Email: {JSON.stringify(ctx.user[0].email)}</p>
-           <p>Balance: ${JSON.stringify(ctx.user[0].balance)}</p>
-         </>
-             }
-          />
-        );
-      }
-      
-    
+  const [data, setData] = React.useState('');
+
+  React.useEffect(() => {
+      // Fetch all accounts from API
+      fetch('/account/all')
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+              setData(JSON.stringify(data));
+          });
+  }, []);
+ 
+  return (
+      <div>
+      <h5> Account members data</h5>
+      {data}
+      </div>);
+};
