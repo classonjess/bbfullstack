@@ -62,7 +62,7 @@ function Home(){
     
     return(
       <div>
-      <img src="bank_PNG24.png" className="img-fluid" alt="Responsive image"></img>
+      <img src="bank_PNG24.png" ></img>
       Name<br/>
       <input type='input'
       className='form-control'
